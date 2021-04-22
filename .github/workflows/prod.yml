@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup env
-        run: chmod +x setup.test.sh && sh setup.sh
+        run: chmod +x setup.sh && sh setup.sh
         env:
           SHEET_KEY: ${{secrets.SHEET_KEY}}
           API_TOKEN: ${{secrets.API_KEY}}
