@@ -21,3 +21,25 @@ def add_todo(message):
     new_todo = Todo(todo_title, False, target_channel)
     new_todo.register()
     message.send(f'{todo_title}を追加したよ！')
+
+@respond_to(r'^done')
+def done_todo(message):
+    handler = TodoHandler()
+    target_channel = '#' + message.channel._body['name']
+    todos = handler.get_todo_by_channel(target_channel)
+    index = int(message._body['text'].split(' ')[1]) - 1
+    target_todo = todos[index]
+    target_todo.done()
+
+    message.send(f'『{target_todo.title}』が完了したよ！')
+
+@respond_to(r'^undone')
+def done_todo(message):
+    handler = TodoHandler()
+    target_channel = '#' + message.channel._body['name']
+    todos = handler.get_todo_by_channel(target_channel)
+    index = int(message._body['text'].split(' ')[1]) - 1
+    target_todo = todos[index]
+    target_todo.undone()
+
+    message.send(f'『{target_todo.title}』を未完了に戻したよ！')

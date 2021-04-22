@@ -35,4 +35,3 @@ class GoogleSpreadSheetsClient:
         c_list = ['A', 'B', 'C']
         for i, data in enumerate(d_list):
             self.write_cell(c_list[i]+str(record_id), data)
-

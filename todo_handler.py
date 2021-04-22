@@ -10,10 +10,12 @@ class TodoHandler:
         return self.__dict_to_todo(values)
         
 
-    def __dict_to_todo(self, _dict):
+    def __dict_to_todo(self, _dict, i=None):
         _dict['is_done'] = True if _dict['is_done'] == 'TRUE' else False
+        todo = Todo(**_dict)
+        todo.set_index(i)
 
-        return Todo(**_dict)
+        return todo
 
 
     def get_todo_by_channel(self, channel):
@@ -23,4 +25,4 @@ class TodoHandler:
             if channel == todo_channel:
                 picked_todos.append(i)
 
-        return [self.__dict_to_todo(self.client.get_record(i)) for i in picked_todos]
+        return [self.__dict_to_todo(self.client.get_record(i), i) for i in picked_todos]
