@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  wallaby:
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "8000:8000"
+    command: ["python3", "run.py"]
