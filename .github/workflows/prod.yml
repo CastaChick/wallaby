@@ -8,9 +8,23 @@ jobs:
   test:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - name: setup env
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup env
         run: chmod +x setup.test.sh && sh setup.sh
         env:
           SHEET_KEY: ${{secrets.SHEET_KEY}}
           API_TOKEN: ${{secrets.API_KEY}}
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install poetry
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+      - name: Add path for poetry
+        run: echo "::add-path::$HOME/.poetry/bin"
+      - name: Install packages
+        run: poetry install --no-interaction
+      - name: Run test
+        run: poetry run python -m pytest
