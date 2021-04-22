@@ -1,5 +1,5 @@
-echo 'SHEET_KEY=$SHEET_KEY' >> .env
-echo 'API_TOKEN=$API_TOKEN' >> .env
+echo "SHEET_KEY=$SHEET_KEY" >> .env
+echo "API_TOKEN=$API_TOKEN" >> .env
 
 mkdir env
 touch env/account_key.json
