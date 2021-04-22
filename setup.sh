@@ -14,4 +14,4 @@ echo '{
   "token_uri": "$TOKEN_URI",
   "auth_provider_x509_cert_url": "$AUTH_PROVIDER",
   "client_x509_cert_url": "$CLIENT_URL"
-}'
+}' >> env/account_key.json
