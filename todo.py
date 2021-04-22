@@ -1,3 +1,5 @@
+from spread_sheets_client import GoogleSpreadSheetsClient
+
 class Todo:
     def __init__(self, title, is_done, channel):
         self.title = title
@@ -9,3 +11,8 @@ class Todo:
         message = f'{checkmark} {self.title}'
 
         return message
+
+    def register(self):
+        client = GoogleSpreadSheetsClient()
+        row_data = [self.title, 'TRUE' if self.is_done else 'FALSE', self.channel]
+        client.write_record(row_data)
