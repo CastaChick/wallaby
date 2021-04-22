@@ -8,12 +8,12 @@ def todo_list(message):
     target_channel = '#' + message.channel._body['name']
     todos = handler.get_todo_by_channel(target_channel)
     if todos:
-        todo_message = '\n'.join([todo.to_message() for todo in todos])
+        todo_message = '\n'.join([todo.to_message()+': '+str(i+1) for i, todo in enumerate(todos)])
     else:
         todo_message = 'このチャンネルにはTodoが設定されていないよ！'
     message.send(todo_message)
 
-@respond_to(r'add')
+@respond_to('add')
 def add_todo(message):
     handler = TodoHandler()
     target_channel = '#' + message.channel._body['name']
