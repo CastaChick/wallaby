@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "wallaby"
+version = "0.1.0"
+description = ""
+authors = ["CastaChick <casta46chick@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+gspread = "^3.7.0"
+oauth2client = "^4.1.3"
+python-dotenv = "^0.17.0"
+slackbot = "^1.0.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
