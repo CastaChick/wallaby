@@ -22,6 +22,8 @@ jobs:
       - name: Install poetry
         run: |
           curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+      - name: Add path
+        run: echo "$HOME/.poetry/bin" >> $GITHUB_PATH
       - name: Install packages
         run: poetry install --no-interaction
       - name: Run test
