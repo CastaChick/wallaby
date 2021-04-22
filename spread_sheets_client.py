@@ -29,3 +29,10 @@ class GoogleSpreadSheetsClient:
 
     def write_cell(self, cell, value):
         self.worksheet.update_acell(cell, value)
+
+    def write_record(self, d_list):
+        record_id = last_record_id = len(self.get_column(0)['values']) + 2
+        c_list = ['A', 'B', 'C']
+        for i, data in enumerate(d_list):
+            self.write_cell(c_list[i]+str(record_id), data)
+

@@ -7,6 +7,8 @@ def todo_list(message):
     target_channel = '#' + message.channel._body['name']
     todos = handler.get_todo_by_channel(target_channel)
     
-    todo_message = '\n'.join([todo.to_message() for todo in todos])
-
+    if todos:
+        todo_message = '\n'.join([todo.to_message() for todo in todos])
+    else:
+        todo_message = 'このチャンネルにはTodoが設定されていないよ！'
     message.send(todo_message)

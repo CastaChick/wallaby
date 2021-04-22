@@ -25,3 +25,16 @@ class Test_スプレッドシートにアクセスして読み書きを行う:
         client.write_cell('A2', 'test')
         assert client.get_cell('A2') == 'test'
 
+    def test_スプレッドシートの末尾にレコードを追加する(self):
+        client = GoogleSpreadSheetsClient()
+        client.write_record(['test_write', 'FALSE', '#test_write'])
+        expect = {
+            'title': 'test_write',
+            'is_done': 'FALSE',
+            'channel': '#test_write'
+        }
+
+        last_record_id = len(client.get_column(0)['values']) - 1
+        data = client.get_record(last_record_id)
+        assert data == expect
+
