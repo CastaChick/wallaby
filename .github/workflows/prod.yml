@@ -9,3 +9,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - name: setup env
+        run: chmod +x setup.test.sh && sh setup.sh
+        env:
+          SHEET_KEY: ${{secrets.SHEET_KEY}}
+          API_TOKEN: ${{secrets.API_KEY}}
