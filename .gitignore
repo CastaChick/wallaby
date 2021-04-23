@@ -112,7 +112,6 @@ celerybeat.pid
 .env
 .env/
 .venv/
-env/account_key.json
 venv/
 ENV/
 env.bak/
